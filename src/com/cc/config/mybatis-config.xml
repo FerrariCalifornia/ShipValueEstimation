@@ -7,6 +7,7 @@
     </settings>
     <typeAliases>
         <typeAlias alias="ship" type="com.cc.bean.Ship"/>
+        <typeAlias alias="authority" type="com.cc.bean.Authority"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -23,5 +24,6 @@
     <mappers>
         <!-- // power by http://www.yiibai.com -->
         <mapper resource="com/cc/Mapping/ShipMapper.xml"/>
+        <mapper resource="com/cc/Mapping/AuthorityMapper.xml"/>
     </mappers>
 </configuration>

@@ -1,10 +1,7 @@
 package com.cc.bean;
 
-import java.util.Date;
-
 /**
  * Created by cc on 2017/2/16.
- *
  */
 public class Ship {
     private int id;
@@ -16,13 +13,15 @@ public class Ship {
     private double length;
     private double width;
     private double height;
+
     private double grosston;
+
     private double deadweight;
     private String enginetype;
     private double enginepower;
-    private Date   builddate;
+    private String builddate;
     private String factory;
-    private Date dealdate;
+    private String dealdate;
     private double predict;
 
     public Ship() {
@@ -31,8 +30,8 @@ public class Ship {
     public Ship(int id, String index, String type, String port,
                 String level, String district, double length,
                 double width, double height, double grosston,
-                double deadweight, String enginetype, double enginepower,
-                Date builddate, String factory, Date dealdate, double predict) {
+                double deadweight, String enginetype, double enginepower
+            , String factory, String builddate, double predict, String dealdate) {
         this.id = id;
         this.index = index;
         this.type = type;
@@ -46,9 +45,7 @@ public class Ship {
         this.deadweight = deadweight;
         this.enginetype = enginetype;
         this.enginepower = enginepower;
-        this.builddate = builddate;
         this.factory = factory;
-        this.dealdate = dealdate;
         this.predict = predict;
 
     }
@@ -59,6 +56,22 @@ public class Ship {
 
     public void setPredict(double predict) {
         this.predict = predict;
+    }
+
+    public String getBuilddate() {
+        return builddate;
+    }
+
+    public void setBuilddate(String builddate) {
+        this.builddate = builddate;
+    }
+
+    public String getDealdate() {
+        return dealdate;
+    }
+
+    public void setDealdate(String dealdate) {
+        this.dealdate = dealdate;
     }
 
     public int getId() {
@@ -165,13 +178,6 @@ public class Ship {
         this.enginepower = enginepower;
     }
 
-    public Date getBuilddate() {
-        return builddate;
-    }
-
-    public void setBuilddate(Date builddate) {
-        this.builddate = builddate;
-    }
 
     public String getFactory() {
         return factory;
@@ -181,11 +187,5 @@ public class Ship {
         this.factory = factory;
     }
 
-    public Date getDealdate() {
-        return dealdate;
-    }
 
-    public void setDealdate(Date dealdate) {
-        this.dealdate = dealdate;
-    }
 }
