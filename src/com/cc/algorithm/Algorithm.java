@@ -13,9 +13,8 @@ public class Algorithm {
 
 
     public List<Ship> predict(List<Ship> shipList ){
-
-
-
-        return shipList;
+        TestSYL testSYL = new TestSYL();
+        List<Ship> shipList1 = testSYL.predict(shipList);
+        return shipList1;
     }
 }

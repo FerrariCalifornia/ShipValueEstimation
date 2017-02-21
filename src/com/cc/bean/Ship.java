@@ -13,9 +13,7 @@ public class Ship {
     private double length;
     private double width;
     private double height;
-
     private double grosston;
-
     private double deadweight;
     private String enginetype;
     private double enginepower;
@@ -27,11 +25,13 @@ public class Ship {
     public Ship() {
     }
 
+
+
     public Ship(int id, String index, String type, String port,
                 String level, String district, double length,
                 double width, double height, double grosston,
                 double deadweight, String enginetype, double enginepower
-            , String factory, String builddate, double predict, String dealdate) {
+            , String builddate, String factory, String dealdate, double predict) {
         this.id = id;
         this.index = index;
         this.type = type;
@@ -39,6 +39,8 @@ public class Ship {
         this.level = level;
         this.district = district;
         this.length = length;
+        this.builddate = builddate;
+        this.dealdate = dealdate;
         this.width = width;
         this.height = height;
         this.grosston = grosston;
