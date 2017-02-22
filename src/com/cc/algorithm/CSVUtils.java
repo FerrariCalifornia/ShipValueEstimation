@@ -11,7 +11,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -173,69 +172,6 @@ public class CSVUtils {
         }
     }
 
-    /**
-     * 测试数据
-     * @param args
-     */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-    public static void main(String[] args) {
-        List exportData = new ArrayList<Map>();
-        Map row1 = new LinkedHashMap<String, String>();
-        row1.put("1", "TEST331");
-        row1.put("2", "油船");
-        row1.put("3", "深圳");
-        row1.put("4", "ZC");
-        row1.put("5", "内河");
-        row1.put("6", "46.5");
-        row1.put("7", "8.6");
-        row1.put("8", "3.6");
-        row1.put("9", "385");
-        row1.put("10", "503");
-        row1.put("11", "8140ZC450-1");
-        row1.put("12", "660");
-        row1.put("13", "10/31/2011");
-        row1.put("14", "台州市路桥金清海祥船舶修造有限公司");
-        row1.put("15", "9/1/2016");
-        exportData.add(row1);
-        row1 = new LinkedHashMap<String, String>();
-        row1.put("1", "TEST331");
-        row1.put("2", "油船");
-        row1.put("3", "深圳");
-        row1.put("4", "ZC");
-        row1.put("5", "内河");
-        row1.put("6", "46.5");
-        row1.put("7", "8.6");
-        row1.put("8", "3.6");
-        row1.put("9", "385");
-        row1.put("10", "503");
-        row1.put("11", "8140ZC450-1");
-        row1.put("12", "660");
-        row1.put("13", "10/31/2011");
-        row1.put("14", "台州市路桥金清海祥船舶修造有限公司");
-        row1.put("15", "9/1/2016");
-        exportData.add(row1);
-        LinkedHashMap map = new LinkedHashMap();
-        map.put("1", "编号");
-        map.put("2", "船舶类型");
-        map.put("3", "船籍港");
-        map.put("4", "船级");
-        map.put("5", "航区");
-        map.put("6", "长度");
-        map.put("7", "型宽");
-        map.put("8", "型深");
-        map.put("9", "总吨");
-        map.put("10", "载重吨");
-        map.put("11", "主机型号");
-        map.put("12", "主机功率");
-        map.put("13", "建成日期");
-        map.put("14", "建造船厂");
-        map.put("15", "成交日期");
-        String path = "c:/export/";
-        String fileName = "new";
-        File file = CSVUtils.createCSVFile(exportData, map, path, fileName);
-        String fileName2 = file.getName();
-      //  CSVUtils.deleteFiles(exportData, map, path, fileName);
-        System.out.println("文件名称：" + fileName2);
-    }
+
 }
 

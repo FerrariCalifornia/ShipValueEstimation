@@ -27,7 +27,6 @@ public class Test {
         p.setToken("donghui");
         p.setData(listship);
         System.out.println(gson.toJson(p));
-
     }
 
 }

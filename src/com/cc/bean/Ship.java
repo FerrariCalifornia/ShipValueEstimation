@@ -1,5 +1,7 @@
 package com.cc.bean;
 
+import com.sun.istack.internal.NotNull;
+
 /**
  * Created by cc on 2017/2/16.
  */

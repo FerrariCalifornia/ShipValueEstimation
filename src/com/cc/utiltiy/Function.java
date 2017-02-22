@@ -5,7 +5,9 @@ import com.cc.bean.PostData;
 import com.cc.bean.Result;
 import com.cc.bean.Ship;
 import com.google.gson.Gson;
+import org.springframework.validation.BindingResult;
 
+import java.beans.beancontext.BeanContextMembershipListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -45,11 +47,10 @@ public class Function {
         //find the expiration_date through the token which is get from the post request
         Date expiration_date = mybatisConn.findToken(token);
         if(expiration_date==null){
-            return "Please call the administory";
+            return "Please contact your administrator!";
         }
         return dataCompare(expiration_date);
     }
-
 
     //compare the date
     public static String dataCompare(Date expiration_date){
@@ -82,6 +83,23 @@ public class Function {
             // TODO Auto-generated catch block
             e.printStackTrace();
             return null;
+        }
+    }
+
+    //request field control
+    public void fieldControl(List<Ship> shipList){
+        for (Ship ship :
+                shipList) {
+            ship.getHeight();
+        }
+    }
+
+    public  String validate(BindingResult result){
+        if(result.hasErrors()){
+          int errornumber=  result.getErrorCount();
+            return "error:"+String.valueOf(errornumber);
+        }else {
+            return "success";
         }
     }
 }

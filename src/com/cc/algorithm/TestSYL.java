@@ -13,9 +13,6 @@ import java.util.Map;
 
 public class TestSYL {
     public static List<Ship> predict(List<Ship> listship) {
-//        List<Ship> listship = new ArrayList<Ship>();
-//        Ship test_ship=new Ship(1,"TEST331","油船","深圳","ZC","内河",46.5,8.6,3.6,385,503,"8140ZC450-1",660, "8/20/2015","台州市路桥金清海祥船舶修造有限公司","8/20/2016",0);
-//        listship.add(test_ship);
         List exportData = new ArrayList<Map>();
         for (int i = 0; i < listship.size(); i++) {
             Map row1 = new LinkedHashMap<String, String>();
@@ -54,13 +51,26 @@ public class TestSYL {
         map.put("15", "成交日期");
         // 生成文件目录
         String path = "/home/cc/Documents/ship";
+        //String path = "WEB-INF/output";
+
         String fileName = "new";
         File file = CSVUtils.createCSVFile(exportData, map, path, fileName);
 
-
         String fileName2 = file.getName();
+
+//        String csv3 = "WEB-INF/output/" + fileName2;
+//        File newCsv = new File(csv3);
+//        String newCsvPath = newCsv.getAbsolutePath();
+//
+//        String predictPath = "WEB-INF/output/predict.R";
+//        File pre = new File(predictPath);
+//        String prePath = pre.getAbsolutePath();
+
         String csv = "/home/cc/Documents/ship/" + fileName2;
         String cmd = "Rscript /home/cc/Documents/ship/predict.R " + csv;
+
+        //String cmd = "Rscript " + prePath + " " + newCsvPath;
+
         try {
             String[] cm = new String[]{"/bin/sh", "-c", cmd};
             Process ps = Runtime.getRuntime().exec(cm);
@@ -86,53 +96,24 @@ public class TestSYL {
                     listship.get(i).getLevel(), listship.get(i).getDistrict(), listship.get(i).getLength(), listship.get(i).getWidth(),
                     listship.get(i).getHeight(), listship.get(i).getGrosston(), listship.get(i).getDeadweight(), listship.get(i).getEnginetype(),
                     listship.get(i).getEnginepower(), listship.get(i).getBuilddate(), listship.get(i).getFactory(), listship.get(i).getDealdate()
-                    ,Double.valueOf(result.get(i + 1)));
+                    , Double.valueOf(result.get(i + 1)));
             listship.set(i, ship);
         }
-//        try {
-//            Thread.currentThread().sleep(1000);
-//        } catch (InterruptedException ie) {
-//            ie.printStackTrace();
-//        }//等bat执行完再删除
-        CSVUtils.deleteFile("/home/cc/Documents/ship/", fileName2);//用完删除文件
-    return listship;
-    }
 
-    public static void creatBat(String command, String batURL) {
-        FileWriter fw = null;
-        try {
-            fw = new FileWriter(batURL);
-            fw.write(command);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(0);
-        } finally {
-            if (fw != null) {
-                try {
-                    fw.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    System.exit(0);
-                }
-            }
-        }
+        CSVUtils.deleteFile("/home/cc/Documents/ship/", fileName2);//用完删除文件
+        return listship;
     }
 
 
     //read the result
     public static List<String> Readcsv() {
         List<String> predict = new ArrayList();
-
         try {
             BufferedReader reader = new BufferedReader(new FileReader("/home/cc/Documents/ship/jieguo.csv"));
             String line;
             while ((line = reader.readLine()) != null) {
                 predict.add(line.split(",")[1].toString());
-                //  System.out.println(line.split(",")[1]);
             }
-//            for (int i = 0; i < predict.size(); i++) {
-//                System.out.println(predict.get(i).toString());
-//            }
             reader.close();
         } catch (FileNotFoundException ex) {
             System.out.println("没找到文件！");
