@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class TestSYL {
+public class TestSYL2 {
     public static List<Ship> predict(List<Ship> listship) {
         List exportData = new ArrayList<Map>();
         for (int i = 0; i < listship.size(); i++) {
@@ -50,7 +50,7 @@ public class TestSYL {
         map.put("14", "建造船厂");
         map.put("15", "成交日期");
         // 生成文件目录
-        String path = "/data/ship90";
+        String path = "/data/ship20";
         //String path = "WEB-INF/output";
 
         String fileName = "new";
@@ -66,8 +66,8 @@ public class TestSYL {
 //        File pre = new File(predictPath);
 //        String prePath = pre.getAbsolutePath();
 
-        String csv = "/data/ship90/" + fileName2;
-        String cmd = "Rscript /data/ship90/predict.R " + csv;
+        String csv = "/data/ship20/" + fileName2;
+        String cmd = "Rscript /data/ship20/predict.R " + csv;
 
         //String cmd = "Rscript " + prePath + " " + newCsvPath;
 
@@ -100,7 +100,7 @@ public class TestSYL {
             listship.set(i, ship);
         }
 
-        CSVUtils.deleteFile("/data/ship90/", fileName2);//用完删除文件
+        CSVUtils.deleteFile("/data/ship20/", fileName2);//用完删除文件
         return listship;
     }
 
@@ -109,7 +109,7 @@ public class TestSYL {
     public static List<String> Readcsv() {
         List<String> predict = new ArrayList();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("/data/ship90/jieguo.csv"));
+            BufferedReader reader = new BufferedReader(new FileReader("/data/ship20/jieguo.csv"));
             String line;
             while ((line = reader.readLine()) != null) {
                 predict.add(line.split(",")[1].toString());

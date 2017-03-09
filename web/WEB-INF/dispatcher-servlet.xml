@@ -9,6 +9,6 @@
     <context:annotation-config />
 
     <mvc:annotation-driven validator="ShipValidator"/>
-    <bean id="ShipValidator" class="com.cc.validator.ShipValidator"></bean>
-    <context:component-scan base-package="com.cc.controller"></context:component-scan>
+    <bean id="ShipValidator" class="com.cc.validator.ShipValidator"/>
+    <context:component-scan base-package="com.cc.controller"/>
 </beans>

@@ -38,6 +38,24 @@ public class Function {
         return gson.toJson(result);
     }
 
+    public String responseMessage2(PostData postData){
+        Result result = new Result();
+        String message=verify(postData.getToken());
+        if(message.equals("success")){
+            //验证成功进行预测
+            Algorithm algorithm = new Algorithm();
+            List<Ship> data=algorithm.predict2(postData.getData());
+            //将预测结果和数据存入数据库。
+            addShip(data);
+            result.setMessage(message);
+            result.setData(data);
+        }else {
+            result.setMessage(message);
+        }
+        Gson gson = new Gson();
+        return gson.toJson(result);
+    }
+
 
 
     //验证是否过期
