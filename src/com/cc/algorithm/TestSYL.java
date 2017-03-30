@@ -101,6 +101,8 @@ public class TestSYL {
         }
 
         CSVUtils.deleteFile("/data/ship90/", fileName2);//用完删除文件
+        CSVUtils.deleteFile("/data/ship90/", "jieguo.csv");//用完删除文件
+
         return listship;
     }
 
