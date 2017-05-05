@@ -24,9 +24,9 @@ import java.util.Map;
 @Controller
 public class ShipController {
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/ship90", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/testship90", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody()
-    public void test(@Validated @RequestBody PostData postData ,BindingResult result, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public void test(@RequestBody PostData postData, HttpServletRequest request, HttpServletResponse response) throws Exception {
         response.setContentType("application/json;charset=utf-8");
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
@@ -35,20 +35,15 @@ public class ShipController {
 
         PrintWriter pw = response.getWriter();
         Function function = new Function();
-        if (result.hasErrors()){
-            Map<String,String> map = new HashMap<String, String>();
-            map.put("message","字段不能为空");
-            Gson gson = new Gson();
-            pw.print(gson.toJson(map));
-        }else {
-            pw.print(function.responseMessage(postData));
-        }
+
+        System.out.println("success");
+        pw.print(function.responseMessage(postData));
 
         pw.close();
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/ship20", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/testship20", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody()
     public void test2(@Validated @RequestBody PostData postData ,BindingResult result, HttpServletRequest request, HttpServletResponse response) throws Exception {
         response.setContentType("application/json;charset=utf-8");

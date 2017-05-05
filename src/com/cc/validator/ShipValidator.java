@@ -18,6 +18,7 @@ public class ShipValidator implements Validator {
     }
 
     public void validate(Object obj, Errors e) {
+        System.out.println("validate--------");
         ValidationUtils.rejectIfEmpty(e, "token", "token.empty");
         ValidationUtils.rejectIfEmpty(e, "data", "data.empty");
 //        Ship p = (Ship) obj;
